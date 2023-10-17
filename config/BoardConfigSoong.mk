@@ -19,6 +19,11 @@ SOONG_CONFIG_NAMESPACES += flareVarsPlugin
 
 SOONG_CONFIG_flareVarsPlugin :=
 
+# Camera
+ifneq ($(TARGET_CAMERA_PACKAGE_NAME),)
+     $(call soong_config_set,camera,package_name,$(TARGET_CAMERA_PACKAGE_NAME))
+endif
+
 define addVar
   SOONG_CONFIG_flareVarsPlugin += $(1)
   SOONG_CONFIG_flareVarsPlugin_$(1) := $($1)
